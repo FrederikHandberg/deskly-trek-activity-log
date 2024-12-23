@@ -9,7 +9,79 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      activity: {
+        Row: {
+          activity_id: number
+          date: string
+          desk_id: number
+          standing_time: number
+        }
+        Insert: {
+          activity_id?: number
+          date: string
+          desk_id: number
+          standing_time: number
+        }
+        Update: {
+          activity_id?: number
+          date?: string
+          desk_id?: number
+          standing_time?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_desk"
+            columns: ["desk_id"]
+            isOneToOne: false
+            referencedRelation: "desk"
+            referencedColumns: ["desk_id"]
+          },
+        ]
+      }
+      desk: {
+        Row: {
+          desk_id: number
+          desk_name: string
+          employee_id: number
+        }
+        Insert: {
+          desk_id?: number
+          desk_name: string
+          employee_id: number
+        }
+        Update: {
+          desk_id?: number
+          desk_name?: string
+          employee_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_employee"
+            columns: ["employee_id"]
+            isOneToOne: false
+            referencedRelation: "employee"
+            referencedColumns: ["employee_id"]
+          },
+        ]
+      }
+      employee: {
+        Row: {
+          employee_id: number
+          name: string
+          position: string | null
+        }
+        Insert: {
+          employee_id?: number
+          name: string
+          position?: string | null
+        }
+        Update: {
+          employee_id?: number
+          name?: string
+          position?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
