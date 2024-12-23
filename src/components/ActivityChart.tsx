@@ -1,15 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-const data = [
-  { day: "Mon", minutes: 120 },
-  { day: "Tue", minutes: 180 },
-  { day: "Wed", minutes: 150 },
-  { day: "Thu", minutes: 200 },
-  { day: "Fri", minutes: 160 },
-];
+interface ActivityChartProps {
+  data: Array<{
+    day: string;
+    minutes: number;
+  }>;
+}
 
-export function ActivityChart() {
+export function ActivityChart({ data }: ActivityChartProps) {
   return (
     <Card className="p-6 animate-fade-up">
       <h3 className="font-semibold mb-4">Weekly Standing Time</h3>

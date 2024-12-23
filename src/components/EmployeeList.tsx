@@ -1,13 +1,17 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-const employees = [
-  { name: "Alex Johnson", position: "Developer", standingTime: "3h 20m" },
-  { name: "Sarah Chen", position: "Designer", standingTime: "4h 15m" },
-  { name: "Mike Peters", position: "Manager", standingTime: "2h 45m" },
-];
+interface Employee {
+  name: string;
+  position: string | null;
+  standingTime: string;
+}
 
-export function EmployeeList() {
+interface EmployeeListProps {
+  employees: Employee[];
+}
+
+export function EmployeeList({ employees }: EmployeeListProps) {
   return (
     <Card className="p-6 animate-fade-up">
       <h3 className="font-semibold mb-4">Active Employees</h3>
